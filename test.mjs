@@ -1392,7 +1392,7 @@ const badMsg = await badH2.commands.get("wechat-sub")("https://mp.weixin.qq.com/
 has(badMsg, "没能从文章页取到 biz", "两边都拿不到 biz 时给出可读错误");
 eq(badH2.subs().length, 0, "失败时不会留下空订阅");
 
-/* ---------- 26. 修复回归护栏：配额兜底 / 全局裁剪记账 / AI 写入 / 交互 ---------- */
+/* ---------- 24. 修复回归护栏：配额兜底 / 全局裁剪记账 / AI 写入 / 交互 ---------- */
 
 // 26.1 存储配额不足：逐次减半、⭐ 保留、明确提示、被削减的进 seen
 const qh = await boot({
