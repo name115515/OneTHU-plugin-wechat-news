@@ -13,6 +13,7 @@ export const manifest = {
   name: "公众号订阅",
   version: "0.3.0",
   author: "jerry",
+  repo: "https://github.com/name115515/OneTHU-plugin-wechat-news",
   description:
     "订阅微信公众号：更新列表、AI 概览分类、每日重点摘要、应用内阅读（含图片）。取数走免登录公开通道，可插拔。",
   permissions: ["net:external", "llm", "storage", "ui", "css", "nav"],

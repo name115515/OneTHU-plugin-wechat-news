@@ -220,3 +220,24 @@ node test.mjs     # 无需安装依赖、不联网、不启动应用；全绿输
 - `0.1.0`：首版（页面模板 / 合集 / 搜狗 / RSS 四通道 + 阅读器 + AI + 日报 + 订阅管理）。
 
 已知边界：本期只在桌面端实测（Android 未验）；搜狗通道有反爬；页面模板/合集能拿到什么取决于号主自己维护了什么；拿不到任意公众号的全量历史（见 §6）；列表一次最多渲染 120 篇（其余靠订阅筛选）；AI 分类按需触发，不会自动后台跑。
+
+## 10. 如果以后要上架到插件市场（本期未提交）
+
+按 [OneTHU-Market](https://github.com/smartThise/OneTHU-Market) 的收录要求，本仓库已经满足前面几项：公开仓库、根目录 `plugin.js` 单文件 ES 模块、manifest（`id`/`name`/`version`）与仓库一致、权限只声明实际用到的 6 个、无混淆代码、无远程动态拼装、不收集任何凭据。
+
+要收录时，只需向 OneTHU-Market 的 `registry.json` 提一个 PR，加上这条（`entry` 省略即默认 `plugin.js`）：
+
+```json
+{
+  "id": "onethu.wechat.news",
+  "name": "公众号订阅",
+  "version": "0.3.0",
+  "author": "jerry",
+  "description": "订阅微信公众号：更新列表、AI 概览分类、每日重点摘要、应用内阅读（含图片）；取数走免登录公开通道，可插拔。",
+  "repo": "https://github.com/name115515/OneTHU-plugin-wechat-news",
+  "entry": "plugin.js",
+  "tags": ["公众号", "阅读", "AI", "资讯"]
+}
+```
+
+注意两点：① 市场只收录元信息，版本号请以本仓库 `manifest.version` 为准（客户端会实时从插件仓库拉 manifest）；② 提 PR 前先确认 §6 的「信息获取」短板已经在 README §0 里如实写明——市场审查会核对权限与功能是否匹配、有没有超范围声明。
